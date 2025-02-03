@@ -220,6 +220,20 @@
             unset($f);
 
             echo "<hr>";
+
+            // Ejercicio 7
+
+            // Versión de Apache
+            echo "Versión de Apache: " . $_SERVER['SERVER_SOFTWARE'] . "<br>";
+
+            // Versión de PHP
+            echo "Versión de PHP: " . phpversion() . "<br>";
+
+            // Nombre del sistema operativo
+            echo "Sistema operativo del servidor: " . php_uname() . "<br>";
+
+            // Idioma del navegador
+            echo "Idioma del navegador: " . $_SERVER['HTTP_ACCEPT_LANGUAGE'] . "<br>";
         ?>
     </body>
 </html>
