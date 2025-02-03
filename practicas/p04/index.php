@@ -36,7 +36,42 @@
 
             echo "<hr>";
 
-            
+            // Ejercicio 2
+
+            $a = "ManejadorSQL";
+            echo "Primer valor de a: " . $a . "<br>";
+
+            $b = 'MySQL';
+            echo "Primer valor de b: " . $b . "<br>";
+
+            $c = &$a;
+            echo "Primer valor de c: " . $c . "<br>";
+
+            echo $a . "<br>";
+            echo $b . "<br>";
+            echo $c . "<br>";
+
+            echo "<br>";    
+
+            $a = "PHP server";
+            echo "La variable a se redefine, segundo valor de a: " . $a . "<br>";
+
+            $b = &$a;
+            echo "La variable b pasa a tomar el nuevo valor de a: " . $b . "<br>";
+
+            echo "Mas arriba se declaro que la variable c iba a tomar el valor
+            de a, asi se modifique las veces que sea, por lo que paso a tomar
+            el nuevo valor de a: " . $c . "<br>";
+
+            echo $a . "<br>";
+            echo $b . "<br>";
+            echo $c . "<br>";
+
+            unset($a);
+            unset($b);
+            unset($c);
+
+            echo "<hr>";
         ?>
     </body>
 </html>
