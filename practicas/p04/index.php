@@ -168,6 +168,29 @@
             unset($z);
 
             echo "<hr>";
+
+            // Ejercicio 5
+      
+            $a = "7 personas";
+            $b = (integer) $a;
+            $a = "9E3";
+            $c = (double) $a;
+
+            var_dump("Valor de \$a: " . $a . "<br>"); // Debería mostrar "9E3"
+            var_dump("Valor de \$b: " . $b . "<br>"); // Debería mostrar 7
+            var_dump("Valor de \$c: " . $c . "<br>"); // Debería mostrar 9000
+
+            echo "<br>";
+
+            var_dump($a); echo "<br>"; // string(3) "9E3"
+            var_dump($b); echo "<br>"; // int(7)
+            var_dump($c); echo "<br>"; // float(9000)
+
+            unset($a);
+            unset($b);
+            unset($c);
+
+            echo "<hr>";            
         ?>
     </body>
 </html>
