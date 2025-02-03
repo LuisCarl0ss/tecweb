@@ -190,7 +190,36 @@
             unset($b);
             unset($c);
 
-            echo "<hr>";            
+            echo "<hr>";       
+            
+            // Ejercicio 6
+
+            $a = "0";
+            $b = "TRUE";
+            $c = FALSE;
+            $d = ($a OR $b);
+            $e = ($a AND $c);
+            $f = ($a XOR $b);
+
+            var_dump($a); echo "<br>";
+            var_dump($b); echo "<br>";
+            var_dump($c); echo "<br>";
+            var_dump($d); echo "<br>";
+            var_dump($e); echo "<br>";
+            var_dump($f); echo "<br>";
+
+            // Mostrar valores booleanos con echo
+            echo "<br>Valor de \$c con echo: " . var_export($c, true);
+            echo "<br>Valor de \$e con echo: " . var_export($e, true);
+
+            unset($a);
+            unset($b);
+            unset($c);
+            unset($d);
+            unset($e);
+            unset($f);
+
+            echo "<hr>";
         ?>
     </body>
 </html>
