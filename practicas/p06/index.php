@@ -35,10 +35,29 @@
     <h2>Ejercicio 2</h2>
     <p>Crea un programa para la generación repetitiva de 3 números aleatorios hasta obtener una
     secuencia compuesta por: impar, par, impar</p>
-
     <?php
         generarSecuencia();
     ?>
     
+
+    <h2>Ejercicio 3</h2>
+    <p>Utiliza un ciclo while para encontrar el primer número entero obtenido aleatoriamente,
+    pero que además sea múltiplo de un número dado.</p>
+    <?php
+        require_once __DIR__ . '/src/funciones.php';
+        if (isset($_GET['entero'])) {
+            $numero = intval($_GET['entero']);
+            
+            $resultadoWhile = encontrarMultiploWhile($numero);
+            echo "Primer múltiplo encontrado con while: $resultadoWhile<br>";
+        
+            $resultadoDoWhile = encontrarMultiploDoWhile($numero);
+            echo "Primer múltiplo encontrado con do-while: $resultadoDoWhile<br>";
+        
+        } else {
+            echo "Por favor, proporciona un número válido en la URL usando ?numero=valor";
+        }
+    ?>
+
 </body>
 </html>

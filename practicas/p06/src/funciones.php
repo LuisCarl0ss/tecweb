@@ -1,4 +1,6 @@
 <?php
+
+    //Ejercicio 1
     function esMultiplode5y7($num)
     {
         if ($num%5==0 && $num%7==0)
@@ -11,6 +13,7 @@
         }
     }
 
+    //Ejercicio 2
     function generarSecuencia() {
         $matriz = [];
         $iteraciones = 0;
@@ -46,6 +49,22 @@
         // Mostrar el número de iteraciones y la cantidad de números generados
         echo "<h3>Número de iteraciones: $iteraciones</h3>";
         echo "<h3>Cantidad de números generados: $numerosGenerados</h3>";
+    }
+
+    //Ejercicio 3
+    function encontrarMultiploWhile($numero) {
+        $random = rand(1, 100);
+        while ($random % $numero !== 0) {
+            $random = rand(1, 100);
+        }
+        return $random;
+    }
+
+    function encontrarMultiploDoWhile($numero) {
+        do {
+            $random = rand(1, 100);
+        } while ($random % $numero !== 0);
+        return $random;
     }
 
 ?>
