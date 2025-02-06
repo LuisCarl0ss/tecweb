@@ -83,4 +83,13 @@
         echo "</table>";
     }
 
+    //Ejercicio 5
+    function mensaje($sexo, $edad) {
+        if ($sexo == 'femenino' && $edad >= 18 && $edad <= 35) {
+            echo "Bienvenida, usted está en el rango de edad permitido";
+        } else {
+            echo "No cumples con los requisitos";
+        }
+    }
+
 ?>

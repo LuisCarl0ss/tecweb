@@ -69,7 +69,22 @@
     ?>
 
     <h2>Ejercicio 5</h2>
-    <p></p>
+    <p>Usar las variables $edad y $sexo en una instrucción if para identificar una persona de
+    sexo “femenino”, cuya edad oscile entre los 18 y 35 años y mostrar un mensaje de
+    bienvenida apropiado.</p>
+    <form action="http://localhost/tecweb/practicas/p06/index.php" method="post">
+        Sexo: <input type="text" name="sexo"><br>
+        Edad: <input type="number" name="edad"><br>
+        <input type="submit">
+    </form>
+    <br>
+    <br>
+    <?php
+        if(isset($_POST["sexo"]) && isset($_POST["edad"]))
+        {
+            mensaje($_POST["sexo"], $_POST["edad"]);
+        }
+    ?>
 
 </body>
 </html>
