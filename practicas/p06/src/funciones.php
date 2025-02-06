@@ -67,4 +67,20 @@
         return $random;
     }
 
+    //Ejercicio 4
+    function letrasAalaZ() {
+        $letras = [];
+        for ($i = 97; $i <= 122; $i++) {
+            $letras[] = chr($i);
+        }
+
+         // Crear la tabla en XHTML
+        echo "<table border='1'>";
+        echo "<tr><th>Índice</th><th>Letra</th></tr>";
+        foreach ($letras as $key => $value) {
+            echo "<tr><td>$key</td><td>$value</td></tr>";
+        }
+        echo "</table>";
+    }
+
 ?>
