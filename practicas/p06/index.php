@@ -86,5 +86,42 @@
         }
     ?>
 
+    <h2>Ejercicio 6</h2>
+    <p>Crea en código duro un arreglo asociativo que sirva para registrar el parque vehicular de
+    una ciudad.</p>
+    <h2>Consulta de Parque Vehicular</h2>
+    <form action="http://localhost/tecweb/practicas/p06/index.php" method="get">
+        <label for="matricula">Buscar por matrícula:</label>
+        <input type="text" name="matricula" id="matricula" placeholder="Ej: ABC1234">
+        <button type="submit">Buscar</button>
+    </form>
+    
+    <form action="http://localhost/tecweb/practicas/p06/index.php" method="get">
+        <button type="submit" name="todos" value="1">Mostrar todos los autos</button>
+    </form>
+    <br>
+    <?php
+    if (isset($_GET['matricula'])) {
+        $matricula = strtoupper(trim($_GET['matricula']));
+        $vehiculo = buscarVehiculo($matricula);
+        
+        if ($vehiculo) {
+            echo "<h3>Información del Vehículo con Matrícula: $matricula</h3>";
+            echo "<pre>";
+            print_r($vehiculo);
+            echo "</pre>";
+        } else {
+            echo "<p>No se encontró un vehículo con la matrícula $matricula.</p>";
+        }
+    }
+
+    if (isset($_GET['todos'])) {
+        echo "<h3>Todos los Vehículos Registrados</h3>";
+        echo "<pre>";
+        print_r(obtenerTodosVehiculos());
+        echo "</pre>";
+    }
+    ?>
+
 </body>
 </html>

@@ -92,4 +92,59 @@
         }
     }
 
+    //Ejercicio 6
+    
+    $parqueVehicular = [
+        "ABC1234" => [
+            "Auto" => ["marca" => "Honda", "modelo" => 2020, "tipo" => "camioneta"],
+            "Propietario" => ["nombre" => "Alfonzo Esparza", "ciudad" => "Puebla, Pue.", "direccion" => "C.U., Jardines de San Manuel"]
+        ],
+        "DEF5678" => [
+            "Auto" => ["marca" => "Mazda", "modelo" => 2019, "tipo" => "sedan"],
+            "Propietario" => ["nombre" => "Ma. del Consuelo Molina", "ciudad" => "Puebla, Pue.", "direccion" => "97 oriente"]
+        ],
+        "GHI9101" => [
+            "Auto" => ["marca" => "Toyota", "modelo" => 2018, "tipo" => "hatchback"],
+            "Propietario" => ["nombre" => "Carlos Pérez", "ciudad" => "CDMX", "direccion" => "Av. Insurgentes Sur 123"]
+        ],
+        "JKL1122" => [
+            "Auto" => ["marca" => "Ford", "modelo" => 2021, "tipo" => "camioneta"],
+            "Propietario" => ["nombre" => "Lucía Gómez", "ciudad" => "Guadalajara, Jal.", "direccion" => "Col. Americana"]
+        ],
+        "MNO3344" => [
+            "Auto" => ["marca" => "Chevrolet", "modelo" => 2017, "tipo" => "sedan"],
+            "Propietario" => ["nombre" => "Fernando Ramírez", "ciudad" => "Monterrey, NL", "direccion" => "San Pedro Garza García"]
+        ],
+        "PQR5566" => [
+            "Auto" => ["marca" => "Volkswagen", "modelo" => 2022, "tipo" => "hatchback"],
+            "Propietario" => ["nombre" => "Andrea Torres", "ciudad" => "Puebla, Pue.", "direccion" => "Centro Histórico"]
+        ],
+        "STU7788" => [
+            "Auto" => ["marca" => "Nissan", "modelo" => 2016, "tipo" => "camioneta"],
+            "Propietario" => ["nombre" => "Miguel Herrera", "ciudad" => "Querétaro, Qro.", "direccion" => "El Campanario"]
+        ],
+        "VWX9900" => [
+            "Auto" => ["marca" => "Hyundai", "modelo" => 2019, "tipo" => "sedan"],
+            "Propietario" => ["nombre" => "Patricia Martínez", "ciudad" => "Mérida, Yuc.", "direccion" => "Fracc. Las Américas"]
+        ],
+        "YZA1123" => [
+            "Auto" => ["marca" => "BMW", "modelo" => 2023, "tipo" => "sedan"],
+            "Propietario" => ["nombre" => "Roberto López", "ciudad" => "CDMX", "direccion" => "Polanco"]
+        ],
+        "BCD2345" => [
+            "Auto" => ["marca" => "Kia", "modelo" => 2020, "tipo" => "hatchback"],
+            "Propietario" => ["nombre" => "Valeria Sánchez", "ciudad" => "Toluca, Edo. Méx.", "direccion" => "Col. Centro"]
+        ]
+    ];
+
+    function buscarVehiculo($matricula) {
+        global $parqueVehicular;
+        return $parqueVehicular[$matricula] ?? null;
+    }
+
+    function obtenerTodosVehiculos() {
+        global $parqueVehicular;
+        return $parqueVehicular;
+    }
+
 ?>
