@@ -1,4 +1,5 @@
 <?php
+
 // Obtener los datos del formulario
 $nombre = $_POST['nombre'];
 $marca  = $_POST['marca'];
@@ -25,8 +26,9 @@ $result_check = $link->query($sql_check);
 if ($result_check->num_rows > 0) {
     echo '<h3>Error: El producto con el mismo nombre, marca y modelo ya existe en la base de datos.</h3>';
 } else {
-    // Insertar el nuevo producto en la base de datos
-    $sql_insert = "INSERT INTO productos (nombre, marca, modelo, precio, detalles, unidades, imagen) VALUES ('{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, '{$imagen}')";
+    // Insertar el nuevo producto en la base de datos con eliminado = 0
+    $sql_insert = "INSERT INTO productos (nombre, marca, modelo, precio, detalles, unidades, imagen, eliminado) VALUES ('{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, '{$imagen}', 0)";
+    // $sql_insert = "INSERT INTO productos VALUES (NULL, '{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, '{$imagen}', 0)";
     if ($link->query($sql_insert)) {
         echo '<h3>Producto insertado con éxito</h3>';
         echo '<p>ID: '.$link->insert_id.'</p>';
