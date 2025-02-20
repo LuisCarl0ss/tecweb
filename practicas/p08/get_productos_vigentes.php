@@ -2,16 +2,16 @@
 "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
     <?php
-    if(isset($_GET['tope']))
+    if(isset($_GET['eliminado']))
     {
-        $tope = $_GET['tope'];
+        $eliminado = $_GET['eliminado'];
     }
     else
     {
-        die('Parámetro "tope" no detectado...');
+        die('Parámetro "eliminado" no detectado...');
     }
 
-    if (!empty($tope))
+    if (!empty($eliminado) || $eliminado === '0')
     {
         /** SE CREA EL OBJETO DE CONEXION */
         @$link = new mysqli('localhost', 'root', 'LuiS14uwu26', 'marketzone');
@@ -25,13 +25,17 @@
         }
 
         /** Crear una tabla que no devuelve un conjunto de resultados */
-        if ( $result = $link->query("SELECT * FROM productos WHERE unidades <= $tope") ) 
+        if ( $result = $link->query("SELECT * FROM productos WHERE eliminado = $eliminado") ) 
         {
             /** Se extraen las tuplas obtenidas de la consulta */
             $rows = $result->fetch_all(MYSQLI_ASSOC);
 
             /** útil para liberar memoria asociada a un resultado con demasiada información */
             $result->free();
+        }
+        else
+        {
+            echo '<h3>Error: No se pudo realizar la consulta</h3>';
         }
 
         $link->close();
@@ -60,6 +64,7 @@
                     <th scope="col">Unidades</th>
                     <th scope="col">Detalles</th>
                     <th scope="col">Imagen</th>
+                    <th scope="col">Eliminado</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -73,6 +78,7 @@
                         <td><?= $row['unidades'] ?></td>
                         <td><?= $row['detalles'] ?></td>
                         <td><img src="<?= $row['imagen'] ?>" style="width: 150px; height: auto;"></td>
+                        <td><?= $row['eliminado'] ?></td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -81,7 +87,7 @@
         <?php else : ?>
 
              <script>
-                alert('No se encontraron productos con el tope de unidades especificado');
+                alert('No se encontraron productos con el estado especificado');
              </script>
 
         <?php endif; ?>
