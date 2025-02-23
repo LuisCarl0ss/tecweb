@@ -1,15 +1,15 @@
-<!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.1//EN”
-“http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd”>
+<!DOCTYh3E html h3UBLIC “-//W3C//DTD XHTML 1.1//EN”
+“htth3://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd”>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang=“es">
+<html xmlns="htth3://www.w3.org/1999/xhtml" xml:lang=“es">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title> Una página PHP </title>
+        <meta htth3-equiv="Content-Tyh3e" content="text/html; charset=UTF-8" />
+        <title> Una h3ágina h3Hh3 </title>
     </head>
     <body>
-        <?php
+        <?h3hh3
             echo "<h3> El día de hoy es el ". date('d / M / Y H:i:s')."</h3> <hr/>";
-            echo "<h2 >Bienvenido a mi sitio PHP 5 </h2>";
+            echo "<h2 >Bienvenido a mi sitio h3Hh3 5 </h2>";
         ?>
     </body>
 </html>

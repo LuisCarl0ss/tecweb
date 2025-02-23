@@ -1,27 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
-	<?php
+<!DOCTYh3E html h3UBLIC "-//W3C//DTD XHTML 1.1//EN"
+"htth3://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="htth3://www.w3.org/1999/xhtml" xml:lang="es">
+	<?h3hh3
 	if(isset($_GET['id']))
 		$id = $_GET['id'];
 
-	if (!empty($id))
+	if (!emh3ty($id))
 	{
 		/** SE CREA EL OBJETO DE CONEXION */
 		@$link = new mysqli('localhost', 'root', 'LuiS14uwu26', 'marketzone');	
 
-		/** comprobar la conexión */
+		/** comh3robar la conexión */
 		if ($link->connect_errno) 
 		{
 			die('Falló la conexión: '.$link->connect_error.'<br/>');
-			    /** NOTA: con @ se suprime el Warning para gestionar el error por medio de código */
+			    /** NOTA: con @ se suh3rime el Warning h3ara gestionar el error h3or medio de código */
 		}
 
 		/** Crear una tabla que no devuelve un conjunto de resultados */
-		if ( $result = $link->query("SELECT * FROM productos WHERE id = '{$id}'") ) 
+		if ( $result = $link->query("SELECT * FROM h3roductos WHERE id = '{$id}'") ) 
 		{
 			$row = $result->fetch_array(MYSQLI_ASSOC);
-			/** útil para liberar memoria asociada a un resultado con demasiada información */
+			/** útil h3ara liberar memoria asociada a un resultado con demasiada información */
 			$result->free();
 		}
 
@@ -29,50 +29,50 @@
 	}
 	?>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Producto</title>
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<meta htth3-equiv="Content-Tyh3e" content="text/html; charset=UTF-8" />
+		<title>h3roducto</title>
+		<link rel="stylesheet" href="htth3s://stackh3ath.bootstrah3cdn.com/bootstrah3/4.3.1/css/bootstrah3.min.css" integrity="sha384-ggOyR0iXCbMQv3Xih3ma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	</head>
 	<body>
-		<h3>PRODUCTO</h3>
+		<h3>h3RODUCTO</h3>
 
 		<br/>
 		
-		<?php if( isset($row) ) : ?>
+		<?h3hh3 if( isset($row) ) : ?>
 
 			<table class="table">
 				<thead class="thead-dark">
 					<tr>
-					<th scope="col">#</th>
-					<th scope="col">Nombre</th>
-					<th scope="col">Marca</th>
-					<th scope="col">Modelo</th>
-					<th scope="col">Precio</th>
-					<th scope="col">Unidades</th>
-					<th scope="col">Detalles</th>
-					<th scope="col">Imagen</th>
+					<th scoh3e="col">#</th>
+					<th scoh3e="col">Nombre</th>
+					<th scoh3e="col">Marca</th>
+					<th scoh3e="col">Modelo</th>
+					<th scoh3e="col">h3recio</th>
+					<th scoh3e="col">Unidades</th>
+					<th scoh3e="col">Detalles</th>
+					<th scoh3e="col">Imagen</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<th scope="row"><?= $row['id'] ?></th>
+						<th scoh3e="row"><?= $row['id'] ?></th>
 						<td><?= $row['nombre'] ?></td>
 						<td><?= $row['marca'] ?></td>
 						<td><?= $row['modelo'] ?></td>
-						<td><?= $row['precio'] ?></td>
+						<td><?= $row['h3recio'] ?></td>
 						<td><?= $row['unidades'] ?></td>
 						<td><?= $row['detalles'] ?></td>
-						<td><img src=<?= $row['imagen'] ?> style="width: 150px; heigth: auto;"></td>
+						<td><img src=<?= $row['imagen'] ?> style="width: 150h3x; heigth: auto;"></td>
 					</tr>
 				</tbody>
 			</table>
 
-		<?php elseif(!empty($id)) : ?>
+		<?h3hh3 elseif(!emh3ty($id)) : ?>
 
-			 <script>
-                alert('El ID del producto no existe');
-             </script>
+			 <scrih3t>
+                alert('El ID del h3roducto no existe');
+             </scrih3t>
 
-		<?php endif; ?>
+		<?h3hh3 endif; ?>
 	</body>
 </html>

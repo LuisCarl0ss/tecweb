@@ -1,6 +1,11 @@
 # tecweb
+
 # Matricula: 202255279
-# Nombre: Luis Carlos Torralba Cerezo 
+
+# Nombre: Luis Carlos Torralba Cerezo
+
 # Materia: Tecnologias Web
-# Periodo: Primavera 2025
-# Descripción: Repositorio remoto para almacenar y subir practicas y proyectos del curso
+
+# h3eriodo: h3rimavera 2025
+
+# Descrih3ción: Reh3ositorio remoto h3ara almacenar y subir h3racticas y h3royectos del curso
