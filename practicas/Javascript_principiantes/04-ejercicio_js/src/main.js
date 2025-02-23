@@ -266,3 +266,98 @@ function imprimirNumeros1_10(){
         infoDiv.innerHTML += f + '<br>';
     }
 }
+
+// JS05_Funciones.pdf
+// Ejemplo pág. 6
+function cuidado(){
+    var msg1 = 'Cuidado, ingresa tu documento correctamente';
+    var msg2 = 'Cuidado, ingresa tu documento correctamente';
+    var msg3 = 'Cuidado, ingresa tu documento correctamente';
+
+    var infoDiv = document.getElementById('mensajeRepetido');
+    infoDiv.innerHTML += msg1 + '<br>';
+    infoDiv.innerHTML += msg2 + '<br>';
+    infoDiv.innerHTML += msg3 + '<br>';
+}
+
+// Ejemplo pág. 7
+function mensaje(){
+    var x = 0;
+    var mensaje = 'Cuidado, ingresa tu documento correctamente';
+    while (x < 3) {
+        var infoDiv = document.getElementById('mensaje3veces');
+        infoDiv.innerHTML += mensaje + '<br>';
+        x = x + 1;
+    }
+}
+
+// Ejemplo pág. 10
+function mostrarRango(){
+    var valor1,valor2;
+    valor1 = prompt('Ingresa el valor inferior:', '');
+    valor1 = parseInt(valor1);
+    valor2 = prompt('Ingresa el valor superior:', '');
+    valor2 = parseInt(valor2);
+
+    var inicio;
+    for(inicio = valor1; inicio <= valor2; inicio++) {
+        var infoDiv = document.getElementById('rango');
+        infoDiv.innerHTML += inicio + '<br>';
+    }
+}
+
+// Ejemplo pág. 13
+function convertirCastellano(){
+    var valor;
+    valor = prompt("Ingresa un valor entre 1 y 5", "");
+    valor = parseInt(valor);
+
+    var resultado;
+
+    if(valor == 1) {
+        resultado = "uno";
+        return resultado;
+    } else {
+        if(valor == 2) {
+            resultado = "dos";
+            return resultado;
+        } else {
+            if(valor == 3) {
+                resultado = "tres";
+                return resultado;
+            } else {
+                if(valor == 4) {
+                    resultado = "cuatro";
+                    return resultado;
+                } else {
+                    if(valor == 5) {
+                        resultado = "cinco";
+                        return resultado;
+                    } else {
+                        resultado = "Valor incorrecto";
+                        return resultado;
+                    }
+                }
+            }
+        }
+        var infoDiv = document.getElementById('castellano');
+        infoDiv.innerHTML = resultado;
+    }
+}
+
+// Ejemplo pág. 15
+function convertirCastellano2() {
+    var num;
+    num = prompt('Ingresa un número entre 1 y 5:', '');
+    num = parseInt(num);
+    switch (num) {
+        case 1: return 'uno';
+        case 2: return 'dos';
+        case 3: return 'tres';
+        case 4: return 'cuatro';
+        case 5: return 'cinco';
+        default: return 'Número no comprendido entre 1 y 5';
+    }
+    var infoDiv = document.getElementById('castellano2');
+    infoDiv.innerHTML = convertirCastellano2();
+}

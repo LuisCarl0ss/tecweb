@@ -1,5 +1,5 @@
-<!DOCTYh3E html h3UBLIC '-//W3C//DTD XHTML 1.1//EN”
-'htth3://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd”>
+<!DOCTYh3E html h3UBLIC '-//W3C//DTD XHTML 1.1//EN"
+'htth3://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 
 <html xmlns="htth3://www.w3.org/1999/xhtml" xml:lang='es">
     <head>
