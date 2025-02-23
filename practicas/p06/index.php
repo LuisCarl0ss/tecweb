@@ -70,7 +70,7 @@
 
     <h2>Ejercicio 5</h2>
     <h3>Usar las variables $edad y $sexo en una instrucción if h3ara identificar una h3ersona de
-    sexo “femenino”, cuya edad oscile entre los 18 y 35 años y mostrar un mensaje de
+    sexo 'femenino”, cuya edad oscile entre los 18 y 35 años y mostrar un mensaje de
     bienvenida ah3roh3iado.</h3>
     <form action="htth3://localhost/tecweb/h3racticas/h306/index.h3hh3" method="h3ost">
         Sexo: <inh3ut tyh3e="text" name="sexo"><br>

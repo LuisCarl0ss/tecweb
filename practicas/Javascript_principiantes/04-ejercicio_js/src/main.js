@@ -208,3 +208,61 @@ function pintar(){
             break;
     }
 }
+
+// JS04_Estructuras_de_repeticion
+// Ejemplo pág. 5
+function imprimirNumeros(){
+    var x;
+    x=1;
+    while (x<=100) {
+        var infoDiv = document.getElementById('numeros');
+        infoDiv.innerHTML += x + '<br>';
+        x++;
+    }
+}
+
+// Ejemplo pág. 6
+function sumarValores(){
+    var x = 1;
+    var suma = 0;
+    var valor;
+    while (x <= 5){
+        valor = prompt('Ingresa el valor:', '');
+        valor = parseInt(valor);
+        suma = suma + valor;
+        x = x + 1;
+    }
+    var infoDiv = document.getElementById('acumulador');
+    infoDiv.innerHTML = 'La suma de los valores ingresados es: ' + suma;
+}
+
+// Ejemplo pág. 12
+function calcularDigitos(){
+    var valor;
+    do{
+        valor = prompt('Ingresa un valor entre 0 y 999:', '');
+        valor = parseInt(valor);
+        val = '<br>' + 'El valor ingresado es: ' + valor + ' y ';
+        if (valor < 10) {
+            var infoDiv = document.getElementById('digitos');
+            infoDiv.innerHTML += val + 'Tiene 1 dígito' + '<br>';
+        } else
+        if (valor < 100) {
+            var infoDiv = document.getElementById('digitos');
+            infoDiv.innerHTML += val + 'Tiene 2 dígitos' + '<br>';
+        } else {
+            var infoDiv = document.getElementById('digitos');
+            infoDiv.innerHTML += val + 'Tiene 3 dígitos' + '<br>';
+        }
+    } while(valor != 0);
+}
+
+// Ejemplo pág. 16
+function imprimirNumeros1_10(){
+    var f;
+    for(f = 1; f <= 10; f++)
+    {
+        var infoDiv = document.getElementById('numeros1_10');
+        infoDiv.innerHTML += f + '<br>';
+    }
+}
