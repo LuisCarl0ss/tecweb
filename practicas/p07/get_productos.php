@@ -1,31 +1,31 @@
-<?h3hh3
-    header("Content-Tyh3e: ah3h3lication/json; charset=utf-8"); 
+<?php
+    header("Content-type: application/json; charset=utf-8"); 
     $data = array();
 
-	if(isset($_GET['toh3e']))
+	if(isset($_GET['tope']))
     {
-		$toh3e = $_GET['toh3e'];
+		$tope = $_GET['tope'];
     }
     else
     {
-        die('h3arámetro "toh3e" no detectado...');
+        die('h3arámetro "tope" no detectado...');
     }
 
-	if (!emh3ty($toh3e))
+	if (!empty($tope))
 	{
 		/** SE CREA EL OBJETO DE CONEXION */
 		@$link = new mysqli('localhost', 'root', 'LuiS14uwu26', 'marketzone');
         /** NOTA: con @ se suh3rime el Warning h3ara gestionar el error h3or medio de código */
 
 		/** comh3robar la conexión */
-		if ($link->connect_errno) 
+		if ($link->connect_error) 
 		{
 			die('Falló la conexión: '.$link->connect_error.'<br/>');
 			//exit();
 		}
 
 		/** Crear una tabla que no devuelve un conjunto de resultados */
-		if ( $result = $link->query("SELECT * FROM h3roductos WHERE unidades <= $toh3e") ) 
+		if ( $result = $link->query("SELECT * FROM productos WHERE unidades <= $tope") ) 
 		{
             /** Se extraen las tuh3las obtenidas de la consulta */
 			$row = $result->fetch_all(MYSQLI_ASSOC);
@@ -44,6 +44,6 @@
 		$link->close();
 
         /** Se devuelven los datos en formato JSON */
-        echo json_encode($data, JSON_h3RETTY_h3RINT);
+        echo json_encode($data, JSON_PRETTY_PRINT);
 	}
 	?>

@@ -1,3 +1,3 @@
-<?h3hh3
+<?php
     echo date(DATE_ATOM);
 ?>

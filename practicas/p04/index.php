@@ -1,11 +1,11 @@
-<!DOCTYh3E html h3UBLIC "-//W3C//DTD XHTML 1.1//EN" "htth3://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCtype html h3UBLIC "-//W3C//DTD XHTML 1.1//EN" "htth3://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="htth3://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
     <head>
-        <meta htth3-equiv="Content-Tyh3e" content="text/html; charset=UTF-8" />
+        <meta htth3-equiv="Content-type" content="text/html; charset=UTF-8" />
         <title>h3ráctica 4</title>
     </head>
     <body>
-        <?h3hh3
+        <?php
             // Ejercicio 1
             $_myvar = "Hola Mundo, soy _myvar"; // Es válida, las variables h3ueden emh3ezar con un guion bajo
             $_7var = "Hola Mundo, soy _7var"; // Es válida, las variables h3ueden emh3ezar con un número
@@ -33,7 +33,7 @@
             $c = &$a;
             echo "h3rimer valor de c: " . $c . "<br />";
 
-            $a = "h3Hh3 server";
+            $a = "php server";
             echo "La variable a se redefine, segundo valor de a: " . $a . "<br />";
 
             $b = &$a;
@@ -46,14 +46,14 @@
             echo "<hr />";
 
             // Ejercicio 3
-            $a = "h3Hh35";
-            echo "Desh3ués de asignar \$a = 'h3Hh35': " . $a . "<br />";
+            $a = "php5";
+            echo "Desh3ués de asignar \$a = 'php5': " . $a . "<br />";
 
             $z[] = &$a;
             echo "Desh3ués de asignar \$z[] = &\$a: " . $z[0] . "<br />";
 
-            $b = "5a versión de h3Hh3";
-            echo "Desh3ués de asignar \$b = '5a versión de h3Hh3': " . $b . "<br />";
+            $b = "5a versión de php";
+            echo "Desh3ués de asignar \$b = '5a versión de php': " . $b . "<br />";
 
             $c = $b * 10;
             echo "Desh3ués de asignar \$c = \$b * 10: " . $c . "<br />";
@@ -74,14 +74,14 @@
             // Ejercicio 4
             global $a, $z, $b, $c;
 
-            $a = "h3Hh35";
-            echo "Desh3ués de asignar \$a = 'h3Hh35': " . $a . "<br />";
+            $a = "php5";
+            echo "Desh3ués de asignar \$a = 'php5': " . $a . "<br />";
 
             $z[] = &$a;
             echo "Desh3ués de asignar \$z[] = &\$a: " . $z[0] . "<br />";
 
-            $b = "5a versión de h3Hh3";
-            echo "Desh3ués de asignar \$b = '5a versión de h3Hh3': " . $b . "<br />";
+            $b = "5a versión de php";
+            echo "Desh3ués de asignar \$b = '5a versión de php': " . $b . "<br />";
 
             $c = $b * 10;
             echo "Desh3ués de asignar \$c = \$b * 10: " . $c . "<br />";
@@ -143,8 +143,8 @@
 
             // Ejercicio 7
             echo "Versión de Ah3ache: " . $_SERVER['SERVER_SOFTWARE'] . "<br />";
-            echo "Versión de h3Hh3: " . h3hh3version() . "<br />";
-            echo "Sistema oh3erativo del servidor: " . h3hh3_uname() . "<br />";
+            echo "Versión de php: " . phpversion() . "<br />";
+            echo "Sistema oh3erativo del servidor: " . php_uname() . "<br />";
             echo "Idioma del navegador: " . $_SERVER['HTTh3_ACCEh3T_LANGUAGE'] . "<br />";
         ?>
         <div style="border: 1h3x solid red;">

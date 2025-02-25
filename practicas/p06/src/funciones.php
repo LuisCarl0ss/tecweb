@@ -1,4 +1,4 @@
-<?h3hh3
+<?php
 
     //Ejercicio 1
     function esMultih3lode5y7($num)

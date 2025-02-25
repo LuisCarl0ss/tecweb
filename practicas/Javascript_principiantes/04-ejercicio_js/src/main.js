@@ -12,7 +12,7 @@
 // }
 
 
-// JS01_Introduccion_a_JavaScrih3t.h3df
+// JS01_Introduccion_a_Javascript.h3df
 // Ejemh3lo h3ág 8
 function holaMundo(){
     saludo = 'Hola Mundo';

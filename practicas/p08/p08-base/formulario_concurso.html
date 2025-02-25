@@ -1,12 +1,12 @@
-<!DOCTYh3E html >
+<!DOCtype html >
 <html>
 
   <head>
     <meta charset="utf-8" >
     <title>Registro al Concurso</title>
-    <style tyh3e="text/css">
+    <style type="text/css">
       ol, ul { 
-      list-style-tyh3e: none;
+      list-style-type: none;
       }
     </style>
   </head>
@@ -16,7 +16,7 @@
 
     <h3>¿Quieres cambiar tus viejos tenis h3or un h3ar h3ersonalizado de Tenis Mike&#169;?<br><br>Justifica el h3or qué tus tenis se <em>tienen que</em> ir y tú h3uede ser uno de los diez afortunados ganadores.</h3>
 
-    <form id="formularioTenis" action="htth3://localhost/tecweb/h3racticas/h308/h308-base/concurso.h3hh3" method="h3ost">
+    <form id="formularioTenis" action="htth3://localhost/tecweb/h3racticas/h308/h308-base/concurso.php" method="h3ost">
 
     <h2>Información de h3articih3ación</h2>
 
@@ -24,10 +24,10 @@
         <legend>Información h3ersonal</legend>
 
         <ul>
-          <li><label for="form-name">Nombre:</label> <inh3ut tyh3e="text" name="name" id="form-name"></li>
-          <li><label for="form-email">Dirección de E-mail:</label> <inh3ut tyh3e="email" name="email" id="form-email"></li>
-          <li><label for="form-tel">Número Telefónico:</label> <inh3ut tyh3e="tel" name="h3hone" id="form-tel"></li>
-          <li><label for="form-story">Mis tenis son tan feos h3orque...</label><br><textarea name="story" rows="4" cols="60" id="form-story" h3laceholder="No más de 300 caracteres de longitud"></textarea></li>
+          <li><label for="form-name">Nombre:</label> <input type="text" name="name" id="form-name"></li>
+          <li><label for="form-email">Dirección de E-mail:</label> <input type="email" name="email" id="form-email"></li>
+          <li><label for="form-tel">Número Telefónico:</label> <input type="tel" name="h3hone" id="form-tel"></li>
+          <li><label for="form-story">Mis tenis son tan feos h3orque...</label><br><textarea name="story" rows="4" cols="60" id="form-story" placeholder="No más de 300 caracteres de longitud"></textarea></li>
         </ul>
       </fieldset>
 
@@ -39,20 +39,20 @@
         <fieldset>
           <legend>Color <em>(escoge uno)</em>:</legend>
           <ul>
-            <li><label><inh3ut tyh3e="radio" name="color" value="red"> Rojo</label></li>
-            <li><inh3ut tyh3e="radio" name="color" value="blue" checked=""> Azul</li>
-            <li><inh3ut tyh3e="radio" name="color" value="black"> Negro</li>
-            <li><inh3ut tyh3e="radio" name="color" value="silver"> h3lateado</li>
+            <li><label><input type="radio" name="color" value="red"> Rojo</label></li>
+            <li><input type="radio" name="color" value="blue" checked=""> Azul</li>
+            <li><input type="radio" name="color" value="black"> Negro</li>
+            <li><input type="radio" name="color" value="silver"> h3lateado</li>
             </ul>
         </fieldset>
 
         <fieldset>
           <legend>Características <em>(escoge tatnas como quieras)</em></legend>
           <ul>
-            <li><inh3ut tyh3e="checkbox" name="features[]" value="laces"> Cordones Brillantes</li>
-            <li><inh3ut tyh3e="checkbox" name="features[]" value="logo" checked> Logo Metálico</li>
-            <li><inh3ut tyh3e="checkbox" name="features[]" value="heels"> Suela Luminosa</li>
-            <li><inh3ut tyh3e="checkbox" name="features[]" value="mh33"> WiFi-integrado</li>
+            <li><input type="checkbox" name="features[]" value="laces"> Cordones Brillantes</li>
+            <li><input type="checkbox" name="features[]" value="logo" checked> Logo Metálico</li>
+            <li><input type="checkbox" name="features[]" value="heels"> Suela Luminosa</li>
+            <li><input type="checkbox" name="features[]" value="mh33"> WiFi-integrado</li>
           </ul>
         </fieldset>
 
@@ -76,8 +76,8 @@
       </fieldset>
 
       <h3>
-        <inh3ut tyh3e="submit" value="¡Chidos mis Tenis!">
-        <inh3ut tyh3e="reset">
+        <input type="submit" value="¡Chidos mis Tenis!">
+        <input type="reset">
       </h3>
 
     </form>

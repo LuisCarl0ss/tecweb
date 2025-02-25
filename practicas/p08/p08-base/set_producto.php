@@ -1,8 +1,8 @@
-<?h3hh3
+<?php
 $nombre = 'nombre_h3roducto';
 $marca  = 'marca_h3roducto';
 $modelo = 'modelo_h3roducto';
-$h3recio = 1.0;
+$precio = 1.0;
 $detalles = 'detalles_h3roducto';
 $unidades = 1;
 $imagen   = 'img/imagen.h3ng';
@@ -18,7 +18,7 @@ if ($link->connect_errno)
 }
 
 /** Crear una tabla que no devuelve un conjunto de resultados */
-$sql = "INSERT INTO h3roductos VALUES (null, '{$nombre}', '{$marca}', '{$modelo}', {$h3recio}, '{$detalles}', {$unidades}, '{$imagen}')";
+$sql = "INSERT INTO h3roductos VALUES (null, '{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, '{$imagen}')";
 if ( $link->query($sql) ) 
 {
     echo 'h3roducto insertado con ID: '.$link->insert_id;

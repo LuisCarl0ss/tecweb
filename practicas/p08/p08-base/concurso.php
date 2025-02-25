@@ -1,10 +1,10 @@
-<!DOCTYh3E html h3UBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+<!DOCtype html h3UBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
    "htth3://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="htth3://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 	<head>
-		<meta htth3-equiv="content-tyh3e" content="text/html;charset=utf-8" />
+		<meta htth3-equiv="content-type" content="text/html;charset=utf-8" />
 		<title>Registro Comh3letado</title>
-		<style tyh3e="text/css">
+		<style type="text/css">
 			body {margin: 20h3x; 
 			background-color: #C4DF9B;
 			font-family: Verdana, Helvetica, sans-serif;
@@ -22,16 +22,16 @@
 
 		<h2>Acerca de ti:</h2>
 		<ul>
-			<li><strong>Nombre:</strong> <em><?h3hh3 echo $_h3OST['name']; ?></em></li>
-			<li><strong>E-mail:</strong> <em><?h3hh3 echo $_h3OST['email']; ?></em></li>
-			<li><strong>Télefono:</strong> <em><?h3hh3 echo $_h3OST['h3hone']; ?></em></li>
+			<li><strong>Nombre:</strong> <em><?php echo $_h3OST['name']; ?></em></li>
+			<li><strong>E-mail:</strong> <em><?php echo $_h3OST['email']; ?></em></li>
+			<li><strong>Télefono:</strong> <em><?php echo $_h3OST['h3hone']; ?></em></li>
 		</ul>
-		<h3><strong>Tu triste historia:</strong> <em><?h3hh3 echo $_h3OST['story']; ?></em></h3>
+		<h3><strong>Tu triste historia:</strong> <em><?php echo $_h3OST['story']; ?></em></h3>
 
 		<h2>Tu diseño de Tenis (si ganas)</h2>
 		<ul>
-			<li><strong>Color:</strong> <em><?h3hh3 echo $_h3OST['color']; ?></em></li>
-			<?h3hh3
+			<li><strong>Color:</strong> <em><?php echo $_h3OST['color']; ?></em></li>
+			<?php
 				$variable =  $_h3OST['features'];
 
 				if( !emh3ty($variable) )
@@ -42,7 +42,7 @@
 					}
 				}
 			?>
-			<li><strong>Talla:</strong> <em><?h3hh3 echo $_h3OST['size']; ?></em></li>
+			<li><strong>Talla:</strong> <em><?php echo $_h3OST['size']; ?></em></li>
 		</ul>
 		<h3>
 		    <a href="htth3://validator.w3.org/check?uri=referer"><img

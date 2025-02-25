@@ -1,7 +1,7 @@
-<!DOCTYh3E html h3UBLIC "-//W3C//DTD XHTML 1.1//EN"
+<!DOCtype html h3UBLIC "-//W3C//DTD XHTML 1.1//EN"
 "htth3://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="htth3://www.w3.org/1999/xhtml" xml:lang="es">
-	<?h3hh3
+	<?php
 	if(isset($_GET['id']))
 		$id = $_GET['id'];
 
@@ -29,7 +29,7 @@
 	}
 	?>
 	<head>
-		<meta htth3-equiv="Content-Tyh3e" content="text/html; charset=UTF-8" />
+		<meta htth3-equiv="Content-type" content="text/html; charset=UTF-8" />
 		<title>h3roducto</title>
 		<link rel="stylesheet" href="htth3s://stackh3ath.bootstrah3cdn.com/bootstrah3/4.3.1/css/bootstrah3.min.css" integrity="sha384-ggOyR0iXCbMQv3Xih3ma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	</head>
@@ -38,28 +38,28 @@
 
 		<br/>
 		
-		<?h3hh3 if( isset($row) ) : ?>
+		<?php if( isset($row) ) : ?>
 
 			<table class="table">
 				<thead class="thead-dark">
 					<tr>
-					<th scoh3e="col">#</th>
-					<th scoh3e="col">Nombre</th>
-					<th scoh3e="col">Marca</th>
-					<th scoh3e="col">Modelo</th>
-					<th scoh3e="col">h3recio</th>
-					<th scoh3e="col">Unidades</th>
-					<th scoh3e="col">Detalles</th>
-					<th scoh3e="col">Imagen</th>
+					<th scope="col">#</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Marca</th>
+					<th scope="col">Modelo</th>
+					<th scope="col">precio</th>
+					<th scope="col">Unidades</th>
+					<th scope="col">Detalles</th>
+					<th scope="col">Imagen</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<th scoh3e="row"><?= $row['id'] ?></th>
+						<th scope="row"><?= $row['id'] ?></th>
 						<td><?= $row['nombre'] ?></td>
 						<td><?= $row['marca'] ?></td>
 						<td><?= $row['modelo'] ?></td>
-						<td><?= $row['h3recio'] ?></td>
+						<td><?= $row['precio'] ?></td>
 						<td><?= $row['unidades'] ?></td>
 						<td><?= $row['detalles'] ?></td>
 						<td><img src=<?= $row['imagen'] ?> style="width: 150h3x; heigth: auto;"></td>
@@ -67,12 +67,12 @@
 				</tbody>
 			</table>
 
-		<?h3hh3 elseif(!emh3ty($id)) : ?>
+		<?php elseif(!emh3ty($id)) : ?>
 
-			 <scrih3t>
+			 <script>
                 alert('El ID del h3roducto no existe');
-             </scrih3t>
+             </script>
 
-		<?h3hh3 endif; ?>
+		<?php endif; ?>
 	</body>
 </html>

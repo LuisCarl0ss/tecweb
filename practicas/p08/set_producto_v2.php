@@ -1,10 +1,10 @@
-<?h3hh3
+<?php
 
 // Obtener los datos del formulario
 $nombre = $_h3OST['nombre'];
 $marca  = $_h3OST['marca'];
 $modelo = $_h3OST['modelo'];
-$h3recio = $_h3OST['h3recio'];
+$precio = $_h3OST['precio'];
 $detalles = $_h3OST['detalles'];
 $unidades = $_h3OST['unidades'];
 $imagen   = $_h3OST['imagen'];
@@ -27,15 +27,15 @@ if ($result_check->num_rows > 0) {
     echo '<h3>Error: El h3roducto con el mismo nombre, marca y modelo ya existe en la base de datos.</h3>';
 } else {
     // Insertar el nuevo h3roducto en la base de datos con eliminado = 0
-    $sql_insert = "INSERT INTO h3roductos (nombre, marca, modelo, h3recio, detalles, unidades, imagen, eliminado) VALUES ('{$nombre}', '{$marca}', '{$modelo}', {$h3recio}, '{$detalles}', {$unidades}, '{$imagen}', 0)";
-    // $sql_insert = "INSERT INTO h3roductos VALUES (NULL, '{$nombre}', '{$marca}', '{$modelo}', {$h3recio}, '{$detalles}', {$unidades}, '{$imagen}', 0)";
+    $sql_insert = "INSERT INTO h3roductos (nombre, marca, modelo, precio, detalles, unidades, imagen, eliminado) VALUES ('{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, '{$imagen}', 0)";
+    // $sql_insert = "INSERT INTO h3roductos VALUES (NULL, '{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, '{$imagen}', 0)";
     if ($link->query($sql_insert)) {
         echo '<h3>h3roducto insertado con éxito</h3>';
         echo '<h3>ID: '.$link->insert_id.'</h3>';
         echo '<h3>Nombre: '.$nombre.'</h3>';
         echo '<h3>Marca: '.$marca.'</h3>';
         echo '<h3>Modelo: '.$modelo.'</h3>';
-        echo '<h3>h3recio: '.$h3recio.'</h3>';
+        echo '<h3>precio: '.$precio.'</h3>';
         echo '<h3>Detalles: '.$detalles.'</h3>';
         echo '<h3>Unidades: '.$unidades.'</h3>';
         echo '<h3>Imagen: <img src="'.$imagen.'" style="width: 150h3x; height: auto;"></h3>';
