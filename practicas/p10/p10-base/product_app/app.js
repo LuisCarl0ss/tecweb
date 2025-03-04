@@ -9,55 +9,60 @@ var baseJSON = {
   };
 
 // FUNCIÓN CALLBACK DE BOTÓN "Buscar"
-function buscarID(e) {
-    /**
-     * Revisar la siguiente información para entender porqué usar event.preventDefault();
-     * http://qbit.com.mx/blog/2013/01/07/la-diferencia-entre-return-false-preventdefault-y-stoppropagation-en-jquery/#:~:text=PreventDefault()%20se%20utiliza%20para,escuche%20a%20trav%C3%A9s%20del%20DOM
-     * https://www.geeksforgeeks.org/when-to-use-preventdefault-vs-return-false-in-javascript/
-     */
+function buscarProducto(e) {
     e.preventDefault();
 
-    // SE OBTIENE EL ID A BUSCAR
-    var id = document.getElementById('search').value;
+    // Obtener el término de búsqueda desde el input
+    var searchTerm = document.getElementById('search').value.trim();
 
-    // SE CREA EL OBJETO DE CONEXIÓN ASÍNCRONA AL SERVIDOR
+    // Validar que se haya ingresado algo en el campo de búsqueda
+    if (searchTerm === "") {
+        alert("Por favor, ingresa un término de búsqueda.");
+        return;
+    }
+
+    // Crear la solicitud AJAX
     var client = getXMLHttpRequest();
     client.open('POST', './backend/read.php', true);
     client.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
     client.onreadystatechange = function () {
-        // SE VERIFICA SI LA RESPUESTA ESTÁ LISTA Y FUE SATISFACTORIA
         if (client.readyState == 4 && client.status == 200) {
-            console.log('[CLIENTE]\n'+client.responseText);
-            
-            // SE OBTIENE EL OBJETO DE DATOS A PARTIR DE UN STRING JSON
-            let productos = JSON.parse(client.responseText);    // similar a eval('('+client.responseText+')');
-            
-            // SE VERIFICA SI EL OBJETO JSON TIENE DATOS
-            if(Object.keys(productos).length > 0) {
-                // SE CREA UNA LISTA HTML CON LA DESCRIPCIÓN DEL PRODUCTO
-                let descripcion = '';
-                    descripcion += '<li>precio: '+productos.precio+'</li>';
-                    descripcion += '<li>unidades: '+productos.unidades+'</li>';
-                    descripcion += '<li>modelo: '+productos.modelo+'</li>';
-                    descripcion += '<li>marca: '+productos.marca+'</li>';
-                    descripcion += '<li>detalles: '+productos.detalles+'</li>';
-                
-                // SE CREA UNA PLANTILLA PARA CREAR LA(S) FILA(S) A INSERTAR EN EL DOCUMENTO HTML
+            console.log('[CLIENTE]\n' + client.responseText);
+
+            let productos = JSON.parse(client.responseText);
+
+            // Verificar si hay resultados
+            if (productos.length > 0) {
                 let template = '';
+
+                productos.forEach(producto => {
+                    let descripcion = `
+                        <li>Precio: ${producto.precio}</li>
+                        <li>Unidades: ${producto.unidades}</li>
+                        <li>Modelo: ${producto.modelo}</li>
+                        <li>Marca: ${producto.marca}</li>
+                        <li>Detalles: ${producto.detalles}</li>
+                    `;
+
                     template += `
                         <tr>
-                            <td>${productos.id}</td>
-                            <td>${productos.nombre}</td>
+                            <td>${producto.id}</td>
+                            <td>${producto.nombre}</td>
                             <td><ul>${descripcion}</ul></td>
                         </tr>
                     `;
+                });
 
-                // SE INSERTA LA PLANTILLA EN EL ELEMENTO CON ID "productos"
+                // Insertar los resultados en la tabla con ID "productos"
                 document.getElementById("productos").innerHTML = template;
+            } else {
+                document.getElementById("productos").innerHTML = "<tr><td colspan='3'>No se encontraron resultados</td></tr>";
             }
         }
     };
-    client.send("id="+id);
+
+    client.send("search=" + encodeURIComponent(searchTerm));
 }
 
 // FUNCIÓN CALLBACK DE BOTÓN "Agregar Producto"
