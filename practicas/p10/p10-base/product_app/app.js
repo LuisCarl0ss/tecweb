@@ -125,3 +125,139 @@ function init() {
     var JsonString = JSON.stringify(baseJSON,null,2);
     document.getElementById("description").value = JsonString;
 }
+
+function validarProducto(producto) {
+    if (!producto.nombre || producto.nombre.length > 100) {
+        return "El nombre es obligatorio y debe tener 100 caracteres o menos.";
+    }
+
+    if (!producto.marca || typeof producto.marca !== "string") {
+        return "La marca es obligatoria y debe ser un texto válido.";
+    }
+
+    if (!producto.modelo || !/^[a-zA-Z0-9]+$/.test(producto.modelo) || producto.modelo.length > 25) {
+        return "El modelo es obligatorio, alfanumérico y debe tener 25 caracteres o menos.";
+    }
+
+    if (!producto.precio || isNaN(producto.precio) || parseFloat(producto.precio) <= 99.99) {
+        return "El precio es obligatorio y debe ser mayor a 99.99.";
+    }
+
+    if (producto.detalles && producto.detalles.length > 250) {
+        return "Los detalles deben tener 250 caracteres o menos.";
+    }
+
+    if (producto.unidades === undefined || isNaN(producto.unidades) || parseInt(producto.unidades) < 0) {
+        return "Las unidades son obligatorias y deben ser un número mayor o igual a 0.";
+    }
+
+    // Si no hay imagen, asignar una por defecto
+    if (!producto.imagen) {
+        producto.imagen = "img/default.png";
+    }
+
+    return "ok"; // Si todo está bien
+}
+
+
+// function agregarProducto(event) {
+//     event.preventDefault(); // Evita la recarga del formulario
+
+//     let descripcionInput = document.getElementById("description");
+//     let nombreInput = document.getElementById("name").value.trim();
+
+//     if (!nombreInput || !descripcionInput.value.trim()) {
+//         alert("El nombre y la descripción (JSON) son obligatorios.");
+//         return;
+//     }
+
+//     let producto;
+//     try {
+//         producto = JSON.parse(descripcionInput.value); // Intenta convertir el JSON ingresado
+//     } catch (e) {
+//         alert("Formato JSON inválido en la descripción.");
+//         return;
+//     }
+
+//     // Se agrega el nombre al objeto producto
+//     producto.nombre = nombreInput;
+
+//     fetch('./backend/create.php', {
+//         method: 'POST',
+//         headers: { 'Content-Type': 'application/json' },
+//         body: JSON.stringify(producto)
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//         alert(data.mensaje);
+//         if (data.estado === "exito") {
+//             document.getElementById("name").value = ""; // Limpia el campo de nombre
+
+//             // Se restablece el JSON con una plantilla base
+//             descripcionInput.value = JSON.stringify({
+//                 precio: 0,
+//                 unidades: 1,
+//                 modelo: " ",
+//                 marca: " ",
+//                 detalles: " ",
+//                 imagen: " "
+//             }, null, 2);
+//         }
+//     })
+//     .catch(error => console.error('Error:', error));
+// }
+
+function agregarProducto(event) {
+    event.preventDefault(); // Evita la recarga de la página
+
+    let descripcionInput = document.getElementById("description");
+    let nombreInput = document.getElementById("name").value.trim();
+
+    if (!nombreInput || !descripcionInput.value.trim()) {
+        alert("El nombre y la descripción (JSON) son obligatorios.");
+        return;
+    }
+
+    let producto;
+    try {
+        producto = JSON.parse(descripcionInput.value); // Convierte el JSON a objeto
+    } catch (e) {
+        alert("Formato JSON inválido en la descripción.");
+        return;
+    }
+
+    // Se agrega el nombre al objeto producto
+    producto.nombre = nombreInput;
+
+    // 🔹 **Validamos el producto antes de enviarlo**
+    let mensajeValidacion = validarProducto(producto);
+    if (mensajeValidacion !== "ok") {
+        alert(mensajeValidacion);
+        return;
+    }
+
+    // Si pasa la validación, enviamos el producto
+    fetch('./backend/create.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(producto)
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.mensaje);
+        if (data.estado === "exito") {
+            document.getElementById("name").value = ""; // Limpia el campo de nombre
+
+            // Se restablece el JSON con una plantilla base
+            descripcionInput.value = JSON.stringify({
+                marca: "",
+                modelo: "",
+                precio: "",
+                unidades: "",
+                detalles: "",
+                imagen: ""
+            }, null, 2);
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
