@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario productos</title>
+    <script src="validaciones.js"></script>
+</head>
+<body>
+    <form id="productoForm" action="http://localhost/tecweb/practicas/p08/set_producto_v2.php" method="post">
+        <h1>Formulario de productos</h1>
+        <label for="nombre">Nombre del producto:</label>
+        <input type="text" name="nombre" id="nombre" maxlength="100" required>
+        <br />
+        <br />
+        <label for="marca">Marca:</label>
+        <select name="marca" id="marca" required>
+            <option value="">Seleccione una marca</option>
+            <option value="Marca1">Tesla</option>
+            <option value="Marca2">Lamborghini</option>
+            <option value="Marca3">Maserati</option>
+        </select>
+        <br />
+        <br />
+        <label for="modelo">Modelo:</label>
+        <input type="text" name="modelo" id="modelo" maxlength="25" required>
+        <br />
+        <br />
+        <label for="precio">Precio:</label>
+        <input type="text" name="precio" id="precio" placeholder="Ejemplo: 100.00" required>
+        <br />
+        <br />
+        <label for="detalles">Detalles:</label>
+        <input type="text" name="detalles" id="detalles">
+        <br />
+        <br />
+        <label for="unidades">Unidades:</label>
+        <input type="text" name="unidades" id="unidades" placeholder="Ejemplo: 10" required>
+        <br />
+        <br />
+        <label for="imagen">Imagen:</label>
+        <input type="text" name="imagen" id="imagen">
+        <br />
+        <br />
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
