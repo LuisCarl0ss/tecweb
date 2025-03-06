@@ -16,11 +16,9 @@ if (isset($data['id'])) {
     $query = "UPDATE productos SET nombre = '$nombre', precio = $precio, unidades = $unidades, modelo = '$modelo', marca = '$marca', detalles = '$detalles', imagen = '$imagen' WHERE id = $id";
 
     if ($conexion->query($query)) {
-        //echo json_encode(['status' => 'success', 'message' => 'Producto actualizado']);
-        echo json_encode(['status' => 'error', 'message' => 'Error al actualizar el producto']);
-    } else {
-        //echo json_encode(['status' => 'error', 'message' => 'Error al actualizar el producto']);
         echo json_encode(['status' => 'success', 'message' => 'Producto actualizado']);
+    } else {
+        echo json_encode(['status' => 'error', 'message' => 'Error al actualizar el producto']);
     }
 } else {
     echo json_encode(['status' => 'error', 'message' => 'ID del producto no proporcionado']);
