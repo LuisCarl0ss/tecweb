@@ -18,7 +18,7 @@
             $sql = "INSERT INTO productos VALUES (null, '{$jsonOBJ->nombre}', '{$jsonOBJ->marca}', '{$jsonOBJ->modelo}', {$jsonOBJ->precio}, '{$jsonOBJ->detalles}', {$jsonOBJ->unidades}, '{$jsonOBJ->imagen}', 0)";
             if($conexion->query($sql)){
                 $data['status'] =  "success";
-                $data['message'] =  "Producto agregado";
+                $data['message'] =  "Producto agregado correctamente";
             } else {
                 $data['message'] = "ERROR: No se ejecuto $sql. " . mysqli_error($conexion);
             }
