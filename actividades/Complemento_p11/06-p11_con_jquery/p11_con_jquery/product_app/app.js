@@ -201,7 +201,7 @@ $(document).ready(function(){
             // SE INSERTA LA PLANTILLA PARA LA BARRA DE ESTADO
             $('#container').html(template_bar);
             // Boton cambia de modificar a agregar
-            // $('button.btn-primary').text("Agregar Producto");
+            $('button.btn-primary').text("Agregar Producto");
             // SE LISTAN TODOS LOS PRODUCTOS
             listarProductos();
             // SE REGRESA LA BANDERA DE EDICIÓN A false
