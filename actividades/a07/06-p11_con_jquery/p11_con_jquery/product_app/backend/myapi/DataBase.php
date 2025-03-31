@@ -1,11 +1,19 @@
 <?php
+namespace tecweb\myapi;
 abstract class DataBase {
     protected $conexion;
-
-    public function __construct($db, $user, $pass, $host = "localhost") {
-        $this->conexion = new mysqli($host, $user, $pass, $db);
-        if ($this->conexion->connect_error) {
-            die("Error de conexión: " . $this->conexion->connect_error);
+    public function __construct($user, $pass, $db) {
+        $this->conexion = @mysqli_connect(
+            'localhost',
+            $user,
+            $pass,
+            $db
+        );
+        /**
+         * NOTA: si la conexion falló $conexion contendrá false
+         */
+        if(!$this->conexion) {
+            die('¡Base de datos NO conectada!');
         }
     }
 }

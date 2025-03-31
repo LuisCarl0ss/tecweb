@@ -1,80 +1,172 @@
 <?php
-require_once "DataBase.php";
+namespace tecweb\myapi;
 
-class Products extends DataBase {
-    private $response = [];
+use tecweb\myapi\DataBase as DataBase;
+require_once __DIR__ . '/DataBase.php';
 
-    public function __construct($db, $user = "root", $pass = "", $host = "localhost") {
-        parent::__construct($db, $user, $pass, $host);
-        $this->response = [];
+class Products extends DataBase{
+    private $data = NULL;
+    
+    public function __construct($user='root', $pass='LuiS14uwu26', $db){
+        $this->data = array();
+        parent::__construct($user, $pass, $db);
     }
 
-    public function add($object) {
-        $sql = "INSERT INTO products (name, description, price) VALUES (?, ?, ?)";
-        $stmt = $this->conexion->prepare($sql);
-        $stmt->bind_param("ssd", $object['name'], $object['description'], $object['price']);
-        $stmt->execute();
-        $this->response = ["status" => $stmt->affected_rows > 0];
-        $stmt->close();
+    public function list(){
+        $this -> data = array();
+
+        if($result = $this->conexion->query("SELECT * FROM productos WHERE eliminado = 0")){
+            $rows = $result->fetch_all(MYSQLI_ASSOC);   
+            if(!is_null($rows)){
+                foreach($rows as $num => $row){
+                    foreach($row as $key => $value){
+                        $this->data[$num][$key]=$value;
+                    }
+                }
+            }
+            $result->free();
+        } else {
+            die('Query Error: '.mysqli_error($this->conexion));
+        }
+        $this->conexion->close();
     }
 
-    public function delete($id) {
-        $sql = "DELETE FROM products WHERE id = ?";
-        $stmt = $this->conexion->prepare($sql);
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        $this->response = ["status" => $stmt->affected_rows > 0];
-        $stmt->close();
+    public function add($producto){
+        $nombre   = $producto['nombre'];
+        $marca    = $producto['marca'];
+        $modelo   = $producto['modelo'];
+        $precio   = $producto['precio'];
+        $detalles = $producto['detalles'];
+        $unidades = $producto['unidades'];
+        $imagen   = $producto['imagen'];
+
+        $this->data = array(
+            'status'  => 'error',
+            'message' => 'Ya existe un producto con ese nombre'
+        );
+
+        if(isset($nombre)) {
+            $sql = "SELECT * FROM productos WHERE nombre = '$nombre' AND eliminado = 0";
+            $result = $this->conexion->query($sql);
+            
+            if ($result->num_rows == 0) {
+                $sql = "INSERT INTO productos VALUES (null, '$nombre', '$marca', '$modelo', '$precio', '$detalles', '$unidades', '$imagen', 0)";
+                if($this->conexion->query($sql)){
+                    $this->data['status'] =  "success";
+                    $this->data['message'] =  "Producto agregado";
+                } else {
+                    $this->data['message'] = "ERROR: No se ejecuto $sql. " . mysqli_error($this->conexion);
+                }
+            }
+            $result->free();
+            $this->conexion->close();
+        }
     }
 
-    public function edit($object) {
-        $sql = "UPDATE products SET name = ?, description = ?, price = ? WHERE id = ?";
-        $stmt = $this->conexion->prepare($sql);
-        $stmt->bind_param("ssdi", $object['name'], $object['description'], $object['price'], $object['id']);
-        $stmt->execute();
-        $this->response = ["status" => $stmt->affected_rows > 0];
-        $stmt->close();
+    public function delete($producto){
+        $id = $producto['id'];
+        $this->data = array(
+            'status'  => 'error',
+            'message' => 'No se pudo eliminar el producto'
+        );
+
+        if(isset($id)) {
+            $sql = "UPDATE productos SET eliminado = 1 WHERE id = $id";
+            if($this->conexion->query($sql)){
+                $this->data['status'] =  "success";
+                $this->data['message'] =  "Producto eliminado";
+            } else {
+                $this->data['message'] = "ERROR: No se ejecuto $sql. " . mysqli_error($this->conexion);
+            }
+            $this->conexion->close();
+        }
     }
 
-    public function list() {
-        $sql = "SELECT * FROM products";
-        $result = $this->conexion->query($sql);
-        $this->response = $result->fetch_all(MYSQLI_ASSOC);
+    public function edit($producto){
+        $id       = $producto['id'];
+        $nombre   = $producto['nombre'];
+        $marca    = $producto['marca'];
+        $modelo   = $producto['modelo'];
+        $precio   = $producto['precio'];
+        $detalles = $producto['detalles'];
+        $unidades = $producto['unidades'];
+        $imagen   = $producto['imagen'];
+
+        $this->data = array(
+            'status'  => 'error',
+            'message' => 'No se pudo editar el producto'
+        );
+
+        if(isset($id)) {
+            $sql = "UPDATE productos SET nombre = '$nombre', marca = '$marca', modelo = '$modelo', precio = '$precio', detalles = '$detalles', unidades = '$unidades', imagen = '$imagen' WHERE id = $id";
+            if($this->conexion->query($sql)){
+                $this->data['status'] =  "success";
+                $this->data['message'] =  "Producto editado";
+            } else {
+                $this->data['message'] = "ERROR: No se ejecuto $sql. " . mysqli_error($this->conexion);
+            }
+            $this->conexion->close();
+        }
     }
 
-    public function search($query) {
-        $sql = "SELECT * FROM products WHERE name LIKE ?";
-        $stmt = $this->conexion->prepare($sql);
-        $search = "%".$query."%";
-        $stmt->bind_param("s", $search);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $this->response = $result->fetch_all(MYSQLI_ASSOC);
-        $stmt->close();
+    public function search($search){
+        $this -> data = array();
+
+        if($result = $this->conexion->query("SELECT * FROM productos WHERE (id = '{$search}' OR nombre LIKE '%{$search}%' OR marca LIKE '%{$search}%' OR detalles LIKE '%{$search}%') AND eliminado = 0")){
+            $rows = $result->fetch_all(MYSQLI_ASSOC);   
+            if(!is_null($rows)){
+                foreach($rows as $num => $row){
+                    foreach($row as $key => $value){
+                        $this->data[$num][$key]=$value;
+                    }
+                }
+            }
+            $result->free();
+        } else {
+            die('Query Error: '.mysqli_error($this->conexion));
+        }
+        $this->conexion->close();
     }
 
-    public function single($id) {
-        $sql = "SELECT * FROM products WHERE id = ?";
-        $stmt = $this->conexion->prepare($sql);
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $this->response = $result->fetch_assoc();
-        $stmt->close();
+    public function single($id){
+        $this -> data = array();
+
+        if($result = $this->conexion->query("SELECT * FROM productos WHERE id = $id")){
+            $row = $result->fetch_assoc();   
+            if(!is_null($row)){
+                foreach($row as $key => $value){
+                    $this->data[$key]=$value;
+                }
+            }
+            $result->free();
+        } else {
+            die('Query Error: '.mysqli_error($this->conexion));
+        }
+        $this->conexion->close();
     }
 
-    public function singleByName($name) {
-        $sql = "SELECT * FROM products WHERE name = ?";
-        $stmt = $this->conexion->prepare($sql);
-        $stmt->bind_param("s", $name);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $this->response = $result->fetch_assoc();
-        $stmt->close();
+    public function singleByName($nombre){
+        $this -> data = array();
+
+        if($result = $this->conexion->query("SELECT * FROM productos WHERE nombre = $nombre")){
+            $row = $result->fetch_assoc();   
+            if(!is_null($row)){
+                foreach($row as $key => $value){
+                    $this->data[$key]=$value;
+                }
+            }
+            $result->free();
+        } else {
+            die('Query Error: '.mysqli_error($this->conexion));
+        }
+        $this->conexion->close();
     }
 
-    public function getData() {
-        return json_encode($this->response);
+    public function getData(){
+        return json_encode($this->data, JSON_PRETTY_PRINT);
     }
+
+  
 }
+
 ?>

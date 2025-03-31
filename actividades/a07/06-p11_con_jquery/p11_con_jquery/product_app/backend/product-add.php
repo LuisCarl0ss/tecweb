@@ -31,4 +31,19 @@
 
     // // SE HACE LA CONVERSIÓN DE ARRAY A JSON
     // echo json_encode($data, JSON_PRETTY_PRINT);
+
+    use tecweb\myapi\Products as Products;
+    require_once __DIR__ . '/myapi/Products.php';
+
+    // Crear instancia de la clase Products
+    $products = new Products('root', 'LuiS14uwu26', 'marketzone');
+
+    // Obtener los datos enviados por el cliente
+    $data = $_POST;
+
+    // Llamar al método correspondiente para agregar un producto
+    $products->add($data);
+
+    // Devolver la respuesta en formato JSON
+    echo $products->getData();
 ?>
