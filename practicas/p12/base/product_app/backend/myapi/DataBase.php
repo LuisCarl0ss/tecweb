@@ -1,5 +1,5 @@
 <?php
-namespace TECWEB\MYAPI;
+namespace TECWEB\MYAPI;ck
 
 abstract class DataBase {
     protected $conexion;
