@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Torra\\P12\\' => array($baseDir . '/src'),
+    'backend\\' => array($baseDir . '/product_app/backend'),
 );
