@@ -19,6 +19,17 @@
         $response->getBody()->write("Hola " . $nombre);
         return $response;
     });
+
+    $app->post('/pruebapost', function (Request $request, Response $response, $args) {
+        $reqPost = $request->getParsedBody(); // obtener el cuerpo de la petición POST
+        $val1 = $reqPost["valor1"]; // obtener el valor del campo valor1
+        $val2 = $reqPost["valor2"]; // obtener el valor del campo valor2
+        
+        $response->getBody()->write("valores:" . $val1 . " " . $val2); // escribir en la respuesta
+        return $response; // devolver la respuesta
+    });
+
+
     
      $app->run(); // ejecutar el servidor web Slim 4
 
