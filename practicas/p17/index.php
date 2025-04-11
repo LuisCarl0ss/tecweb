@@ -29,7 +29,26 @@
         return $response; // devolver la respuesta
     });
 
+    // $app->get('/testjson', function (Request $request, Response $response, $args) {
+    //     $reqPost = $request->getParsedBody(); // obtener el cuerpo de la petición POST
+    //     $data[0]["nombre"] = "Luis Carlos"; // crear un array de datos
+    //     $data[0]["apellido"] = "Torralba Cerezo"; // crear un array de datos
+    //     $data[1]["nombre"] = "Chanchito"; // crear un array de datos
+    //     $data[1]["apellido"] = "Feliz"; // crear un array de datos
+    //     $response->getBody()->write(json_encode($data, JSON_PRETTY_PRINT)); // convertir el array a JSON y escribir en la respuesta
+    //     return $response; // devolver la respuesta
+    // });
 
+
+    $app->post('/testjson', function (Request $request, Response $response, $args) {
+        $reqPost = $request->getParsedBody(); // obtener el cuerpo de la petición POST
+        $data[0]["nombre"] = $reqPost ["nombre1"]; // crear un array de datos
+        $data[0]["apellido"] = $reqPost ["apellidos1"]; // crear un array de datos
+        $data[1]["nombre"] = $reqPost ["nombre2"]; // crear un array de datos
+        $data[1]["apellido"] = $reqPost ["apellidos2"]; // crear un array de datos
+        $response->getBody()->write(json_encode($data, JSON_PRETTY_PRINT)); // convertir el array a JSON y escribir en la respuesta
+        return $response; // devolver la respuesta
+    });
     
      $app->run(); // ejecutar el servidor web Slim 4
 
